@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <h1>Please sign up</h1>
+
+    <form action="/sign-up" method="POST">
+      <div class="form-line">
+        <label for="email">Email</label>
+        <input name="email" placeholder="email" type="email" />
+      </div>
+      <div class="form-line">
+        <label for="first_name">First Name</label>
+        <input name="first_name" placeholder="first_name" type="text" />
+      </div>
+      <div class="form-line">
+        <label for="last_name">Last Name</label>
+        <input name="last_name" placeholder="last_name" type="text" />
+      </div>
+
+      <div class="form-line">
+        <label for="password">Password</label>
+        <input name="password" placeholder="password" type="password" />
+      </div>
+      <div class="form-line"><button>Sign Up</button></div>
+    </form>
+  </body>
+</html>
+<div class="form-line"></div>

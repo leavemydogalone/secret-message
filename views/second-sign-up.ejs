@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <h1>Secret Password</h1>
+    <h2>Before you may enter, you must enter the secret password.</h2>
+    <h3>A hint: The answer you seek is right below your nose...</h3>
+
+    <form action="/second-sign-up" method="POST">
+      <div class="form-line">
+        <label for="password">Password</label>
+        <input name="password" placeholder="password" type="password" />
+      </div>
+      <div class="form-line"><button>Finish Sign Up</button></div>
+    </form>
+  </body>
+</html>
+<div class="form-line"></div>

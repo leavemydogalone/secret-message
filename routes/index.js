@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-const passport = require('passport');
+var passport = require('passport');
+require('passport-local');
 
 var user_controller = require('../controllers/userController');
 var message_controller = require('../controllers/messageController');
@@ -13,17 +14,17 @@ router.get('/', function (req, res, next) {
   });
 });
 
-router.post('/sign-in', function (req, res, next) {
-  passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/',
-    failureFlash: true,
-  });
-});
-
 router.get('/sign-in', function (req, res, next) {
   res.render('sign-in', { title: 'Sign in' });
 });
+
+router.post(
+  '/sign-in',
+  passport.authenticate('local', {
+    successRedirect: '/board',
+    failureRedirect: '/',
+  })
+);
 
 router.get('/sign-up', function (req, res, next) {
   res.render('sign-up', { title: 'Sign Up Form' });

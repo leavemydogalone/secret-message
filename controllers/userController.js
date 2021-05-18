@@ -19,6 +19,7 @@ exports.user_create_post = [
     .withMessage('Last name must be specified')
     .isAlphanumeric()
     .withMessage('Must be alphanumeric'),
+  body('email').isEmail(),
   body('password')
     .trim()
     .isLength({ min: 6 })
@@ -26,7 +27,18 @@ exports.user_create_post = [
     .withMessage('Last name must be at least 6 characters')
     .isAlphanumeric()
     .withMessage('Must be alphanumeric'),
-  body('email').isEmail(),
+  body('confirm-password')
+    .trim()
+    .isLength({ min: 1 })
+    .withMessage('Enter a confirm password.')
+    .escape()
+    .custom((value, { req }) => {
+      if (value !== req.body.password) {
+        throw new Error('Password confirmation is incorrect');
+      } else {
+        return true;
+      }
+    }),
 
   (req, res, next) => {
     const errors = validationResult(req);
@@ -61,3 +73,49 @@ exports.user_create_post = [
     }
   },
 ];
+
+exports.user_second_sign_up_post = [
+  body('password').trim().escape().equals('nose'),
+  (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.render('second-sign-up', {
+        errors: errors.array(),
+      });
+    }
+    next();
+  },
+  // then add the rest of the stuff to update their profile here and redirect
+];
+exports.user_sign_in_post = [
+  body('email')
+    .trim()
+    .isLength({ min: 1 })
+    .withMessage('Enter an email address')
+    .escape(),
+  body('password')
+    .trim()
+    .isLength({ min: 1 })
+    .withMessage('Enter a password')
+    .escape(),
+  (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.render('sign-in', {
+        email: req.body.email,
+        errors: errors.array(),
+      });
+    }
+    next();
+  },
+  ('/sign-in',
+  passport.authenticate('local', {
+    successRedirect: '/board',
+    failureRedirect: '/',
+  })),
+];
+
+exports.user_sign_out_post = function (req, res, next) {
+  req.logout();
+  res.redirect('/');
+};

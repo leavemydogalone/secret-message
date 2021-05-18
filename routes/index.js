@@ -18,13 +18,9 @@ router.get('/sign-in', function (req, res, next) {
   res.render('sign-in', { title: 'Sign in' });
 });
 
-router.post(
-  '/sign-in',
-  passport.authenticate('local', {
-    successRedirect: '/board',
-    failureRedirect: '/',
-  })
-);
+router.post('/sign-in', user_controller.user_sign_in_post);
+
+router.get('/sign-out', user_controller.user_sign_out_post);
 
 router.get('/sign-up', function (req, res, next) {
   res.render('sign-up', { title: 'Sign Up Form' });
@@ -36,6 +32,8 @@ router.post('/sign-up', user_controller.user_create_post);
 router.get('/second-sign-up', function (req, res, next) {
   res.render('second-sign-up', { title: 'Second Sign Up' });
 });
+
+router.post('/second-sign-up', user_controller.user_second_sign_up_post);
 
 router.get('/board', message_controller.index);
 

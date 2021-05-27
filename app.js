@@ -22,6 +22,7 @@ var mongoDB = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@clust
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+mongoose.set('useFindAndModify', false);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -91,6 +92,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(function (req, res, next) {
   res.locals.currentUser = req.user;
+  console.log();
   next();
 });
 

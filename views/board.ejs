@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>Secret Message Board</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <% if (user) {%>
-    <h1>WELCOME BACK <%= user.first_name %></h1>
+    <% if (currentUser) {%>
+    <h1>WELCOME BACK <%= currentUser.first_name %></h1>
     <a href="/sign-out">SIGN OUT</a>
     <% } else { %>
     <h1>How did you get here?</h1>

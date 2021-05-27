@@ -82,11 +82,24 @@ exports.user_second_sign_up_post = [
       res.render('second-sign-up', {
         errors: errors.array(),
       });
+    } else {
+      User.findByIdAndUpdate(
+        req.user._id,
+        { is_a_member: true },
+        {},
+        function (err, result) {
+          if (err) {
+            res.redirect('second-sign-up');
+          } else {
+            res.render('board');
+          }
+        }
+      );
     }
-    next();
+    // then add the rest of the stuff to update their profile here and redirect
   },
-  // then add the rest of the stuff to update their profile here and redirect
 ];
+
 exports.user_sign_in_post = [
   body('email')
     .trim()

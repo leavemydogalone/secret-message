@@ -5,6 +5,7 @@ require('passport-local');
 
 var user_controller = require('../controllers/userController');
 var message_controller = require('../controllers/messageController');
+const message = require('../models/message');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -36,5 +37,9 @@ router.get('/second-sign-up', function (req, res, next) {
 router.post('/second-sign-up', user_controller.user_second_sign_up_post);
 
 router.get('/board', message_controller.index);
+
+router.get('/message-form', message_controller.message_form_get);
+
+router.post('/message-form', message_controller.message_form_post);
 
 module.exports = router;

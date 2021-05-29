@@ -1,18 +1,41 @@
 var Message = require('../models/message');
 const { body, validationResult } = require('express-validator');
 
+// show message board
 exports.index = function (req, res, next) {
-  res.render('board', { title: 'Message board', user: req.user });
+  if (!req.user) {
+    res.redirect('sign-in');
+  } else {
+    Message.find()
+      .sort([['timeStamp', 'ascending']])
+      .exec(function (err, list_messages) {
+        if (err) {
+          return next(err);
+        }
+        // options to format time string
+        const options = { month: 'short', day: '2-digit' };
+
+        // successful so render
+        res.render('board', {
+          options: options,
+          message_list: list_messages,
+        });
+      });
+  }
 };
 
 exports.message_form_get = function (req, res, next) {
-  res.render('message-form');
+  if (!req.user) {
+    res.render('sign-in');
+  } else {
+    res.render('message-form');
+  }
 };
 
 exports.message_form_post = [
   body('title')
     .trim()
-    .isLength({ min: 1 })
+    .isLength({ min: 1, max: 50 })
     .escape()
     .withMessage('Title must be specified.')
     .isAlphanumeric()

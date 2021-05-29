@@ -5,13 +5,27 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <% if (currentUser) {%>
-    <h1>WELCOME BACK <%= currentUser.first_name %></h1>
-    <a href="/sign-out">SIGN OUT</a>
-    <a href="/message-form">Create a message</a>
-    <% } else { %>
+    <% if (!currentUser) {%>
     <h1>How did you get here?</h1>
-
+    <% } else { %>
+    <div class="nav">
+      <h1>WELCOME BACK <%= currentUser.first_name %></h1>
+      <a class="sign-out" href="/sign-out">SIGN OUT</a>
+    </div>
+    <div class="message-board-container">
+      <div class="top-row">
+        <a class="to-message-form" href="/message-form">Create a message</a>
+      </div>
+      <% message_list.forEach(function(message) { %>
+      <div class="message-container">
+        <div class="title"><%= message.title %></div>
+        <div class="message-message"><%= message.message %></div>
+        <div class="time-stamp">
+          <%= message.timeStamp.toLocaleTimeString('en-US', options) %>
+        </div>
+      </div>
+      <% }); %>
+    </div>
     <%}%>
   </body>
 </html>

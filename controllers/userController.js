@@ -67,7 +67,12 @@ exports.user_create_post = [
           if (err) {
             return next(err);
           }
-          res.redirect('second-sign-up');
+          req.login(user, function (err) {
+            if (err) {
+              return next(err);
+            }
+            res.redirect('second-sign-up');
+          });
         });
       });
     }
@@ -86,10 +91,12 @@ exports.user_second_sign_up_post = [
         errors: errors.array(),
       });
     } else {
-      const is_admin = req.admin || false;
+      const is_admin = req.body.admin === 'on';
+      console.log('this is the response from the radio' + req.body.admin);
+
       User.findByIdAndUpdate(
         req.user._id,
-        { is_a_member: true },
+        { is_a_member: true, is_admin: is_admin },
         {},
         function (err, result) {
           if (err) {

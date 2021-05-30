@@ -4,21 +4,25 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <h1>Secret Password</h1>
-    <h2>Before you may enter, you must enter the secret password.</h2>
-    <h3>A hint: The answer you seek is right below your nose...</h3>
+    <div class="sign-up">
+      <h1>Secret Password</h1>
+      <h2>Before you may enter, you must enter the secret password.</h2>
+      <h3>A hint: The answer you seek is right below your nose...</h3>
 
-    <form action="/second-sign-up" method="POST">
-      <div class="form-line">
-        <label for="password">Password</label>
-        <input name="password" type="password" />
-        <div class="admin-radio">
-          <label for="admin">Also if you want to be an admin click this</label>
-          <input type="radio" name="admin" />
+      <form action="/second-sign-up" method="POST">
+        <div class="form-line">
+          <label for="password">Password</label>
+          <input name="password" type="password" />
+          <div class="admin-radio">
+            <label for="admin"
+              >Also if you want to be an admin click this</label
+            >
+            <input type="checkbox" name="admin" />
+          </div>
         </div>
-      </div>
-      <div class="form-line"><button>Finish Sign Up</button></div>
-    </form>
+        <div class="form-line"><button>Finish Sign Up</button></div>
+      </form>
+    </div>
   </body>
 </html>
 <div class="form-line"></div>

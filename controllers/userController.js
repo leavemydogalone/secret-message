@@ -72,6 +72,9 @@ exports.user_create_post = [
       });
     }
   },
+  // need to put sign in stuff here from below
+  // next()
+  //
 ];
 
 exports.user_second_sign_up_post = [
@@ -83,6 +86,7 @@ exports.user_second_sign_up_post = [
         errors: errors.array(),
       });
     } else {
+      const is_admin = req.admin || false;
       User.findByIdAndUpdate(
         req.user._id,
         { is_a_member: true },
@@ -91,7 +95,7 @@ exports.user_second_sign_up_post = [
           if (err) {
             res.redirect('second-sign-up');
           } else {
-            res.render('board');
+            res.redirect('board');
           }
         }
       );
@@ -121,6 +125,7 @@ exports.user_sign_in_post = [
     }
     next();
   },
+  // copy this stuff
   ('/sign-in',
   passport.authenticate('local', {
     successRedirect: '/board',

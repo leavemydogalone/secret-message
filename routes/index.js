@@ -24,7 +24,11 @@ router.post('/sign-in', user_controller.user_sign_in_post);
 router.get('/sign-out', user_controller.user_sign_out_post);
 
 router.get('/sign-up', function (req, res, next) {
-  res.render('sign-up', { title: 'Sign Up Form' });
+  if (!req.currentUser) {
+    res.render('sign-up', { title: 'Sign Up Form' });
+  } else {
+    res.redirect('second-sign-up');
+  }
 });
 
 // POST request for creating User.

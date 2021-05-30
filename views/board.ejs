@@ -23,6 +23,20 @@
         <div class="time-stamp">
           <%= message.timeStamp.toLocaleTimeString('en-US', options) %>
         </div>
+        <% if (currentUser.is_admin) {%>
+        <div class="delete-button">
+          <form action="/message_delete" method="POST">
+            <input
+              type="hidden"
+              name="messageid"
+              required="true"
+              value="<%=
+            message._id %>"
+            />
+            <button>X</button>
+          </form>
+        </div>
+        <% } %>
       </div>
       <% }); %>
     </div>

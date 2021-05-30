@@ -71,3 +71,16 @@ exports.message_form_post = [
     }
   },
 ];
+
+exports.message_delete_post = function (req, res, next) {
+  if (!req.user.is_admin) {
+    res.redirect('board');
+  } else {
+    Message.findByIdAndRemove(req.body.messageid, function deleteMessage(err) {
+      if (err) {
+        return next(err);
+      }
+      res.redirect('board');
+    });
+  }
+};

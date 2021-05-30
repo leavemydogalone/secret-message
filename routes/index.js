@@ -46,4 +46,6 @@ router.get('/message-form', message_controller.message_form_get);
 
 router.post('/message-form', message_controller.message_form_post);
 
+router.post('/message_delete', message_controller.message_delete_post);
+
 module.exports = router;

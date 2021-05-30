@@ -64,6 +64,7 @@ body {
 }
 
 .message-container {
+  position: relative;
   padding: 10px;
   box-shadow: 0 0 3px 0 grey;
   margin-bottom: 15px;
@@ -86,4 +87,12 @@ body {
   position: absolute;
   bottom: 5px;
   right: 5px;
+}
+
+.delete-button {
+  position: absolute;
+  width: fit-content;
+  right: 0;
+  top: 0;
+  padding: 5px 5px 0 0;
 }

@@ -75,7 +75,7 @@ exports.user_create_post = [
 ];
 
 exports.user_second_sign_up_post = [
-  body('password').trim().escape().equals('nose'),
+  body('password').trim().escape().equals('mouth'),
   (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {

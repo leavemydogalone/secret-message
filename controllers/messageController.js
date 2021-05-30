@@ -26,7 +26,7 @@ exports.index = function (req, res, next) {
 
 exports.message_form_get = function (req, res, next) {
   if (!req.user) {
-    res.render('sign-in');
+    res.redirect('sign-in');
   } else {
     res.render('message-form');
   }
@@ -50,9 +50,8 @@ exports.message_form_post = [
   function (req, res, next) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      res.render('sign-up', {
-        title: 'Sign Up',
-        user: req.user,
+      res.render('message-form', {
+        title: 'Message form',
         errors: errors.array(),
       });
       return;

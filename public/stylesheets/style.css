@@ -3,9 +3,6 @@ body {
   padding: 0;
   margin: 0;
 }
-div {
-  width: 100%;
-}
 
 html {
   font-size: 16px;
@@ -48,6 +45,7 @@ h1 {
 .button-container {
   width: fit-content;
 }
+
 .button {
   border-radius: 5px;
   background-color: rgb(189, 189, 255);

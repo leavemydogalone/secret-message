@@ -13,9 +13,12 @@ const MongoStore = require('connect-mongo')(session);
 const bcrypt = require('bcryptjs');
 
 var indexRouter = require('./routes/index');
+var compression = require('compression');
+var helmet = require('helmet');
 
 var app = express();
 
+app.use(helmet());
 //Set up mongoose connection
 var mongoose = require('mongoose');
 var mongoDB = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.yl5n3.mongodb.net/secret-message?retryWrites=true&w=majority`;
@@ -100,6 +103,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(compression());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);

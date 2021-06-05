@@ -92,7 +92,6 @@ exports.user_second_sign_up_post = [
       });
     } else {
       const is_admin = req.body.admin === 'on';
-      console.log('this is the response from the radio' + req.body.admin);
 
       User.findByIdAndUpdate(
         req.user._id,

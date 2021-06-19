@@ -2,16 +2,23 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <form action="/sign-in" method="POST">
-      <label for="email">Email</label>
-      <input name="email" placeholder="email" type="email" />
-      <label for="password">Password</label>
-      <input name="password" placeholder="password" type="password" />
+    <div class="sign-up">
+      <h1><%= title %></h1>
 
-      <button>Sign In</button>
-    </form>
+      <form action="/sign-in" method="POST">
+        <div class="form-line">
+          <label for="email">Email</label>
+          <input name="email" placeholder="email" type="email" />
+        </div>
+        <div class="form-line">
+          <label for="password">Password</label>
+          <input name="password" placeholder="password" type="password" />
+        </div>
+        <button class="button">Sign In</button>
+      </form>
+    </div>
   </body>
 </html>

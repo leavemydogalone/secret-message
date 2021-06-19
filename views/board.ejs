@@ -10,12 +10,17 @@
     <h1>How did you get here?</h1>
     <% } else { %>
     <div class="nav">
-      <h1>WELCOME BACK, <%= currentUser.first_name %></h1>
-      <a class="sign-out" href="/sign-out">SIGN OUT</a>
+      <h1>
+        WELCOME BACK,<br />
+        <%= currentUser.first_name %>
+      </h1>
+      <a class="sign-out button" href="/sign-out">SIGN OUT</a>
     </div>
     <div class="message-board-container">
       <div class="top-row">
-        <a class="to-message-form" href="/message-form">Create a message</a>
+        <a class="to-message-form button" href="/message-form"
+          >Create a message</a
+        >
       </div>
       <% message_list.forEach(function(message) { %>
       <div class="message-container">

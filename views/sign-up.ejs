@@ -2,7 +2,6 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
@@ -12,30 +11,28 @@
       <form action="/sign-up" method="POST">
         <div class="form-line">
           <label for="email">Email</label>
-          <input name="email" placeholder="email" type="email" />
+          <input name="email" type="email" />
         </div>
         <div class="form-line">
           <label for="first_name">First Name</label>
-          <input name="first_name" placeholder="first_name" type="text" />
+          <input name="first_name" type="text" />
         </div>
         <div class="form-line">
           <label for="last_name">Last Name</label>
-          <input name="last_name" placeholder="last_name" type="text" />
+          <input name="last_name" type="text" />
         </div>
 
         <div class="form-line">
           <label for="password">Password</label>
-          <input name="password" placeholder="password" type="password" />
+          <input name="password" type="password" />
         </div>
-        <label for="confirm-password">Confirm Password</label>
-        <input
-          name="confirm-password"
-          placeholder="confirm password"
-          type="password"
-        />
-        <div class="form-line"><button>Sign Up</button></div>
+        <div class="form-line">
+          <label for="confirm-password">Confirm Password</label>
+          <input name="confirm-password" type="password" />
+        </div>
+        <div class="form-line"><button class="button">Sign Up</button></div>
       </form>
+      <div class="weird">YOU WON'T REGRET IT</div>
     </div>
   </body>
 </html>
-<div class="form-line"></div>

@@ -14,12 +14,13 @@ body {
   min-height: 100vh;
   background: #cbd4e7;
 }
-.message-board-container {
+.message-board-container,
+.sign-up {
   background-color: white;
 }
 .nav {
   padding: 20px;
-  background-color: grey;
+  background-color: white;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -59,6 +60,12 @@ body {
   top: 500px;
   right: 30px;
   transform: rotate(309deg);
+}
+.button:hover {
+  cursor: pointer;
+}
+form {
+  margin-top: 15px;
 }
 .form-line {
   margin-bottom: 20px;
@@ -169,7 +176,7 @@ body {
   }
   .container {
     width: auto;
-    margin-top: 100px;
+    margin-top: 50px;
   }
   h1 {
     font-size: 1.5rem;
@@ -183,7 +190,9 @@ body {
   .nav {
     width: 100%;
     margin-bottom: 0;
+    color: white;
   }
+
   .top-row {
     justify-content: flex-start;
   }
